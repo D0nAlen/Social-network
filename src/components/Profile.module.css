@@ -1,0 +1,13 @@
+.content {
+  grid-area: contentArea;
+  background-color: aquamarine;
+}
+
+.content img {
+  width: 300px;
+}
+
+.item {
+  color: rgb(89, 217, 93);
+}
+
