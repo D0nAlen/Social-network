@@ -1,4 +1,4 @@
-.content {
+/* .content {
   grid-area: contentArea;
   background-color: aquamarine;
 }
@@ -11,3 +11,8 @@
   color: rgb(89, 217, 93);
 }
 
+.item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+} */

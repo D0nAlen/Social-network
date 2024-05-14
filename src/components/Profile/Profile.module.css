@@ -1,0 +1,8 @@
+.content {
+  grid-area: contentArea;
+  background-color: aquamarine;
+}
+
+.content img {
+  width: 300px;
+}
