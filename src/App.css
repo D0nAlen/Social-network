@@ -11,3 +11,15 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
 }
+
+.content {
+  grid-area: contentArea;
+  background-color: aquamarine;
+}
+
+.content img {
+  width: 300px;
+}
+
+.app-wrapper-content {
+}

@@ -4,11 +4,31 @@ import classes from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <nav className={classes.nav}>
-      <div className={classes.item}>Profile</div>
-      <div className={classes.item}>Messages</div>
-      <div className={classes.item}>News</div>
-      <div className={classes.item}>Music</div>
-      <div className={classes.item}>Settings</div>
+      <div>
+        <a href="/profile" className={classes.item}>
+          Profile
+        </a>
+      </div>
+      <div>
+        <a href="/dialogs" className={classes.item}>
+          Messages
+        </a>
+      </div>
+      <div>
+        <a href="/news" className={classes.item}>
+          News
+        </a>
+      </div>
+      <div>
+        <a href="/music" className={classes.item}>
+          Music
+        </a>
+      </div>
+      <div>
+        <a href="/settings" className={classes.item}>
+          Settings
+        </a>
+      </div>
     </nav>
   );
 };
