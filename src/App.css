@@ -9,7 +9,7 @@
 
   grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  /* grid-gap: 10px; */
 }
 
 .content {
@@ -22,4 +22,7 @@
 }
 
 .app-wrapper-content {
+  grid-area: contentArea;
+  background-color: rgb(237, 100, 164);
+  padding: 10px;
 }
