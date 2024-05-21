@@ -1,48 +1,53 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
+import Message from "./Message/Message.jsx";
+import DialogItem from "./DialogItem/DialogsItem.jsx";
 
-const DialogItem = (props) => {
-  return (
-    <div className={`${classes.dialog} ${classes.active}`}>
-      <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
-    </div>
-  );
-};
+// const DialogItem = (props) => {
+//   return (
+//     <div className={`${classes.dialog} ${classes.active}`}>
+//       <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
+//     </div>
+//   );
+// };
 
-const Message = (props) => {
-  return <div className={classes.message}>{props.message}</div>;
-};
+// const Message = (props) => {
+//   return <div className={classes.message}>{props.message}</div>;
+// };
 
 const Dialogs = (props) => {
-  let dialogData = [
+  let dialogsData = [
     { id: 1, name: "Lilit" },
     { id: 2, name: "Jane" },
     { id: 3, name: "Alen" },
     { id: 4, name: "Michael" },
   ];
 
-  let messagesData = [
+  let dialogs = dialogsData.map((dialog) => (
+    <DialogItem name={dialog.name} id={dialog.id} />
+  ));
+
+  let messages = [
     { id: 1, message: "Hello Kitty!!!" },
     { id: 2, message: "Have a nice day!" },
     { id: 3, message: "He-he!" },
     { id: 4, message: "Good evening!" },
   ];
 
+  let messagesElements = messages.map((message) => (
+    <Message message={message.message} />
+  ));
+
   return (
     <div className={classes.dialogs}>
-      <div className={classes.dialogsItems}>
-        <DialogItem name={dialogData[0].name} id={dialogData[0].id} />
-        <DialogItem name={dialogData[1].name} id={dialogData[1].id} />
-        <DialogItem name={dialogData[2].name} id={dialogData[2].id} />
-        <DialogItem name={dialogData[3].name} id={dialogData[3].id} />
-      </div>
+      <div className={classes.dialogsItems}>{dialogs}</div>
 
       <div className={classes.messages}>
-        <Message message={messagesData[0].message} />
+        {messagesElements}
+        {/* <Message message={messagesData[0].message} />
         <Message message={messagesData[1].message} />
         <Message message={messagesData[2].message} />
-        <Message message={messagesData[3].message} />
+        <Message message={messagesData[3].message} /> */}
       </div>
     </div>
   );
