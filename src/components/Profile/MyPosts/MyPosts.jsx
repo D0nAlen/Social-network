@@ -3,46 +3,31 @@ import classes from "./MyPosts.module.css";
 import Post from "./Post/Post.jsx";
 
 const MyPosts = (props) => {
-  // let posts = [
-  //   {
-  //     id: 1,
-  //     message: "Hello Kitty!!!",
-  //     likesCount: 72,
-  //     picture: "/IMG/cat1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     message: "Have a nice day!",
-  //     likesCount: 81,
-  //     picture: "/IMG/cat2.jpg",
-  //   },
-  //   { id: 3, message: "He-he!", likesCount: 44, picture: "/IMG/cat4.png" },
-  //   {
-  //     id: 4,
-  //     message: "Good evening!",
-  //     likesCount: 31,
-  //     picture: "/IMG/cat7.jpg",
-  //   },
-  // ];
-
-  let postsElements = props.posts.map((post) => (
+  let postsElements = props.posts.posts.map((post) => (
     <Post
       id={post.id}
       message={post.message}
-      likes={post.likesCount}
+      likesCount={post.likesCount}
       picture={post.picture}
     />
   ));
+
+  let newPostElement = React.createRef();
+
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+  };
 
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref={newPostElement}></textarea>
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
       <div className={classes.posts}>{postsElements}</div>
