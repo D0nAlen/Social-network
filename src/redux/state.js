@@ -1,9 +1,3 @@
-
-
-let rerenderEntireTree = () => {
-    console.log("State is changed");
-};
-
 let dialogs = [
     { id: 1, name: "Lilit" },
     { id: 2, name: "Jane" },
@@ -18,69 +12,73 @@ let messages = [
     { id: 4, message: "Good evening!" },
 ];
 
-let state = {
-    profilePage: {
-        posts: [
-            {
-                id: 1,
-                message: "Hello Kitty!!!",
-                likesCount: 72,
-                picture: "/IMG/cat1.jpg",
-            },
-            {
-                id: 2,
-                message: "Have a nice day!",
-                likesCount: 81,
-                picture: "/IMG/cat2.jpg",
-            },
-            {
-                id: 3,
-                message: "He-he!",
-                likesCount: 44,
-                picture: "/IMG/cat4.png"
-            },
-            {
-                id: 4,
-                message: "Good evening!",
-                likesCount: 31,
-                picture: "/IMG/cat7.jpg",
-            },
-        ],
+let store = {
+    _state: {
+        profilePage: {
+            posts: [
+                {
+                    id: 1,
+                    message: "Hello Kitty!!!",
+                    likesCount: 72,
+                    picture: "/IMG/cat1.jpg",
+                },
+                {
+                    id: 2,
+                    message: "Have a nice day!",
+                    likesCount: 81,
+                    picture: "/IMG/cat2.jpg",
+                },
+                {
+                    id: 3,
+                    message: "He-he!",
+                    likesCount: 44,
+                    picture: "/IMG/cat4.png"
+                },
+                {
+                    id: 4,
+                    message: "Good evening!",
+                    likesCount: 31,
+                    picture: "/IMG/cat7.jpg",
+                },
+            ],
 
-        newPostText: "some boring text...",
+            newPostText: "some boring text...",
+        },
+
+        dialogsPage: {
+            messages: messages,
+            dialogs: dialogs,
+        },
+
+        sidebar: {
+
+        }
     },
-
-    dialogsPage: {
-        messages: messages,
-        dialogs: dialogs,
+    getState() {
+        return this._state;
     },
+    _callSubscriber() {
+        console.log("State is changed");
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            likesCount: 777,
+            picture: "/IMG/cat4.png",
+        };
 
-    sidebar: {
-
-    }
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = "";
+        this._callSubscriber(this._state);
+    },
+    updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state);
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
 }
 
-export let addPost = () => {
-    let newPost = {
-        id: 5,
-        message: state.profilePage.newPostText,
-        likesCount: 777,
-        picture: "/IMG/cat4.png",
-    };
-
-    state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = "";
-    rerenderEntireTree(state);
-}
-
-
-export let updateNewPostText = (newText) => {
-    state.profilePage.newPostText = newText;
-    rerenderEntireTree(state);
-}
-
-export let subscribe = (observer) => {
-    rerenderEntireTree = observer;
-};
-
-export default state;
+export default store;
