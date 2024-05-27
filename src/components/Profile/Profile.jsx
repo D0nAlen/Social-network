@@ -3,11 +3,15 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo.jsx";
 
 const Profile = (props) => {
-  // console.log(props.posts);
   return (
     <div>
       <ProfileInfo />
-      <MyPosts posts={props.posts} addPost={props.addPost} />
+      <MyPosts
+        posts={props.profilePage}
+        addPost={props.addPost}
+        newPostText={props.profilePage.newPostText}
+        updateNewPostText={props.updateNewPostText}
+      />
     </div>
   );
 };
