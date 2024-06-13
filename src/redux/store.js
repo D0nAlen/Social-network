@@ -1,6 +1,6 @@
-import profileReducer from "../redux/profileReducer.js";
-import dialogsReducer from "../redux/dialogsReducer.js";
-import sidebarReducer from "../redux/sidebarReducer.js";
+import profileReducer from "./profileReducer.js";
+import dialogsReducer from "./dialogsReducer.js";
+import sidebarReducer from "./sidebarReducer.js";
 
 let dialogs = [
     { id: 1, name: "Lilit" },
