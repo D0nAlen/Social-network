@@ -39,7 +39,6 @@ export const addPostActionCreator = () => {
 };
 
 export const updateNewPostTextActionCreator = (text) => {
-    debugger;
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: text,
