@@ -30,6 +30,11 @@ const Navigation = () => {
           Settings
         </NavLink>
       </div>
+      <div className={classes.item}>
+        <NavLink to="/users">
+          Users
+        </NavLink>
+      </div>
     </nav>
   );
 };
