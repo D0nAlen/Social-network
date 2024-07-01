@@ -8,7 +8,6 @@
   text-decoration: none;
 }
 
-
-.item a.activeLink{
+a.activeLink {
   color: gold;
 }

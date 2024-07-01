@@ -6,34 +6,28 @@ const Navigation = () => {
   return (
     <nav className={classes.nav}>
       <div className={classes.item}>
-        <NavLink to="/profile" className={classes.activeLink}>
+        <NavLink to="/profile" activeClassName={classes.activeLink}>
           Profile
         </NavLink>
       </div>
-      <div className={`${classes.item} ${classes.activeLink}`}>
-        <NavLink to="/dialogs">
+      <div className={classes.item}>
+        <NavLink to="/dialogs" activeClassName={classes.activeLink}>
           Messages
         </NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/news">
-          News
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/music">
-          Music
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/settings">
-          Settings
-        </NavLink>
-      </div>
-      <div className={classes.item}>
-        <NavLink to="/users">
+        <NavLink to="/users" activeClassName={classes.activeLink}>
           Users
         </NavLink>
+      </div>
+      <div className={classes.item}>
+        <NavLink to="/news">News</NavLink>
+      </div>
+      <div className={classes.item}>
+        <NavLink to="/music">Music</NavLink>
+      </div>
+      <div className={classes.item}>
+        <NavLink to="/settings">Settings</NavLink>
       </div>
     </nav>
   );
