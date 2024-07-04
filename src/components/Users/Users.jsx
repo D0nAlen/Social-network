@@ -1,92 +1,55 @@
-import React from "react";
-import styles from "./Users.module.css";
-import axios from "axios";
+import react from "react";
+import styles from "../Users/Users.module.css";
 
 let userPhoto = "/IMG/cat9.jpg";
 
-class Users extends React.Component {
-  constructor(props) {
-    super(props);
-    axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-      props.setUsers(response.data.items);
-    });
-  }
+let Users = (props) => {
 
-  render() {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
+    }
+
     return (
-      <div>
-        {this.props.users.map((user) => (
-          <div key={user.id}>
-            <span>
-              <div>
-                <img src={user.photos.large != null ? user.photos.large : userPhoto} className={styles.userPhoto} />
-              </div>
-              <div>
-                {user.followed ? (
-                  <button onClick={() => this.props.unfollow(user.id)}>Unfollow</button>
-                ) : (
-                  <button onClick={() => this.props.follow(user.id)}>Follow</button>
-                )}
-              </div>
-            </span>
-            <span>
-              <span>
-                <div>{user.name}</div>
-                <div>{user.status}</div>
-              </span>
-              <span>
-                <div>{"user.location.country"}</div>
-                <div>{"user.location.city"}</div>
-              </span>
-            </span>
-          </div>
-        ))}
-      </div>
+        <div>
+            <div>
+                {pages.map((page) => {
+                    return (
+                        <span
+                            className={props.currentPage === page ? styles.selectedPage : ""}
+                            onClick={() => {
+                                props.onPageChanged(page);
+                            }}
+                        >
+                            {page}
+                        </span>
+                    );
+                })}
+            </div>
+
+            {props.users.map((user) => (
+                <div key={user.id}>
+                    <span>
+                        <div>
+                            <img src={user.photos.large != null ? user.photos.large : userPhoto} className={styles.userPhoto} />
+                        </div>
+                        <div>{user.followed ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button> : <button onClick={() => props.follow(user.id)}>Follow</button>}</div>
+                    </span>
+                    <span>
+                        <span>
+                            <div>{user.name}</div>
+                            <div>{user.status}</div>
+                        </span>
+                        <span>
+                            <div>{"user.location.country"}</div>
+                            <div>{"user.location.city"}</div>
+                        </span>
+                    </span>
+                </div>
+            ))}
+        </div>
     );
-  }
 }
-
-// let Users = (props) => {
-//   if (props.users.length === 0) {
-//     axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-//       props.setUsers(response.data.items);
-//     });
-
-//     // props.setUsers([
-//     //   {
-//     //     id: 1,
-//     //     photoURL: "/IMG/cat13.jpg",
-//     //     followed: true,
-//     //     fullName: "John Dorian",
-//     //     status: "ordinator",
-//     //     location: { city: "Los Angeles", country: "USA" },
-//     //   },
-//     //   {
-//     //     id: 2,
-//     //     photoURL: "/IMG/cat12.jpg",
-//     //     followed: true,
-//     //     fullName: "Perry Cox",
-//     //     status: "doctor",
-//     //     location: { city: "Los Angeles", country: "USA" },
-//     //   },
-//     //   {
-//     //     id: 3,
-//     //     photoURL: "/IMG/cat10.jpg",
-//     //     followed: true,
-//     //     fullName: "Christopher Turk",
-//     //     status: "ordinator",
-//     //     location: { city: "Los Angeles", country: "USA" },
-//     //   },
-//     //   {
-//     //     id: 4,
-//     //     photoURL: "/IMG/cat11.jpg",
-//     //     followed: false,
-//     //     fullName: "Elliot Reid",
-//     //     status: "ordinator",
-//     //     location: { city: "Los Angeles", country: "USA" },
-//     //   },
-//     // ]);
-//   }
-// }
 
 export default Users;
