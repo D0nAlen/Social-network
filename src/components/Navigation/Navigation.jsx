@@ -1,33 +1,29 @@
 import React from "react";
 import classes from "./Navigation.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+
   return (
     <nav className={classes.nav}>
-      <div className={classes.item}>
-        <NavLink to="/profile" activeClassName={classes.activeLink}>
-          Profile
-        </NavLink>
+      <div  className={classes.item}>
+        <NavLink to="/profile" className={location.pathname === "/profile" && classes.activeLink}>Profile</NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/dialogs" activeClassName={classes.activeLink}>
-          Messages
-        </NavLink>
+        <NavLink to="/dialogs" className={location.pathname === "/dialogs" && classes.activeLink}>Messages</NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/users" activeClassName={classes.activeLink}>
-          Users
-        </NavLink>
+        <NavLink to="/users" className={location.pathname === "/users" && classes.activeLink}>Users</NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/news">News</NavLink>
+        <NavLink to="/news" className={location.pathname === "/news" && classes.activeLink}>News</NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/music">Music</NavLink>
+        <NavLink to="/music" className={location.pathname === "/music" && classes.activeLink}>Music</NavLink>
       </div>
       <div className={classes.item}>
-        <NavLink to="/settings">Settings</NavLink>
+        <NavLink to="/settings" className={location.pathname === "/settings" && classes.activeLink}>Settings</NavLink>
       </div>
     </nav>
   );

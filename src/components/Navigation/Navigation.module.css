@@ -8,6 +8,6 @@
   text-decoration: none;
 }
 
-a.activeLink {
+.item a.activeLink {
   color: gold;
 }
