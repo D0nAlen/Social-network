@@ -77,10 +77,12 @@ export const updateNewPostTextActionCreator = (text) => {
     };
 };
 
+
 export const setUserProfileActionCreator = (profile) => {
     return {
         type: SET_USER_PROFILE,
         profile,
     };
 };
+
 export default profileReducer;
