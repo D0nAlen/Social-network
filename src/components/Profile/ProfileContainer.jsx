@@ -6,7 +6,7 @@ import { setUserProfileActionCreator } from "../../redux/profileReducer.js";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/25`).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/29`).then((response) => {
       this.props.setUserProfileActionCreator(response.data);
     });
   }
@@ -20,4 +20,4 @@ let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-export default connect(mapStateToProps, { setUserProfileActionCreator })(ProfileContainer);
+export default connect(mapStateToProps, {setUserProfileActionCreator})(ProfileContainer);
