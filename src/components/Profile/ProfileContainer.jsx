@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useEffect, useParams } from "react";
 import Profile from "./Profile.jsx";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserProfileActionCreator } from "../../redux/profileReducer.js";
-import { useParams } from "react-router-dom";
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
+const ProfileContainer = () => {
+
+  useEffect(() => {
     let userId = GetParamsUser();
-    // let userId = this.props.match.params.userId;
     if (!userId) userId = 2;
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
       this.props.setUserProfileActionCreator(response.data);
     });
-  }
 
-  render() {
     return <Profile {...this.props} profile={this.props.profile} />;
-  }
-}
+  });
+};
+
+// const ProfileContainer = () => {
+//   componentDidMount() {
+//     let userId = GetParamsUser();
+//     if (!userId) userId = 2;
+//     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
+//       this.props.setUserProfileActionCreator(response.data);
+//     });
+//   };
+
+//   render() {
+//     return <Profile {...this.props} profile={this.props.profile} />;
+//   };
+// };
 
 let GetParamsUser = () => {
   let { userId } = useParams();
-  console.log(userId);
   return userId;
 };
 
@@ -31,5 +41,3 @@ let mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { setUserProfileActionCreator })(ProfileContainer);
-
-// export default connect(mapStateToProps, { setUserProfileActionCreator })(WithURLDataContainerComponent);
