@@ -5,13 +5,10 @@ import { connect } from "react-redux";
 import { setUserProfileActionCreator } from "../../redux/profileReducer.js";
 import { useParams } from "react-router-dom";
 
-// let userId = 22;
 const ProfileContainer = (props) => {
   let { userId } = useParams();
 
   useEffect(() => {
-    // let userId = this.props.match.params.userId; //GetParamsUser();
-    // if (!userId) userId = 2;
     if (userId) {
       axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
         props.setUserProfileActionCreator(response.data);

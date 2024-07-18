@@ -21,7 +21,6 @@ const App = () => {
 
           {/* <Route path="/profile/" element={<ProfileContainer />} /> */}
           <Route path="/profile/:userId" element={<ProfileContainer />} />
-          {/* <Route path="/profile/:userId" element={<UserProfile />} /> */}
 
           <Route path="/users" element={<UsersContainer />} />
         </Routes>

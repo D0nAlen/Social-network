@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
   return (
     <div>
       <div className={classes.descriptionBlock}>
-        <img src={props.profile.photos.large ? props.profile.photos.large : "/IMG/cat3.jpg"} className={classes.profilePhoto} />
+        <img src={props.profile.photos.small ? props.profile.photos.small : "/IMG/cat3.jpg"} className={classes.profilePhoto} />
         avatar + description
       </div>
     </div>
