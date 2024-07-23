@@ -20,25 +20,6 @@ const ProfileContainer = (props) => {
   return <Profile profile={props.profile} />;
 };
 
-// const ProfileContainer = () => {
-//   componentDidMount() {
-//     let userId = GetParamsUser();
-//     if (!userId) userId = 2;
-//     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
-//       this.props.setUserProfileActionCreator(response.data);
-//     });
-//   };
-
-//   render() {
-//     return <Profile {...this.props} profile={this.props.profile} />;
-//   };
-// };
-
-// let GetParamsUser = () => {
-//   let { userId } = useParams();
-//   return userId;
-// };
-
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });

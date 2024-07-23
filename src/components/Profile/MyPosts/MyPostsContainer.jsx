@@ -1,7 +1,6 @@
 import React from "react";
 import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profileReducer.js";
 import MyPosts from "./MyPosts.jsx";
-// import { updateNewMessageBodyCreator } from "../../../redux/dialogsReducer.js";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
