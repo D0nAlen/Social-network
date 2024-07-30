@@ -2,10 +2,10 @@ const SET_USER_DATA = "SET USER DATA";
 
 
 let initalState = {
-    userId: 2,
-    email: "blabla@bla.bla",
-    login: "samurai",
-    isAuth: true,
+    userId: null,
+    email: null,
+    login: null,
+    isAuth: false,
 };
 
 const authReducer = (state = initalState, action) => {
