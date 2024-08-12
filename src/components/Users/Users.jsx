@@ -1,7 +1,7 @@
 import react from "react";
 import styles from "../Users/Users.module.css";
 import { NavLink } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import { usersAPI } from "../../api/api.js";
 
 let userPhoto = "/IMG/cat9.jpg";
@@ -9,9 +9,15 @@ let userPhoto = "/IMG/cat9.jpg";
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
+
+  let viewPagesCount = pagesCount;
+  if (pagesCount > 20) viewPagesCount = 20;
+  for (let i = 1; i <= viewPagesCount; i++) {
     pages.push(i);
   }
+  // for (let i = 1; i <= pagesCount; i++) {
+  //   pages.push(i);
+  // }
 
   return (
     <div>
@@ -23,6 +29,7 @@ let Users = (props) => {
               onClick={() => {
                 props.onPageChanged(page);
               }}
+              key={page}
             >
               {page}
             </span>
@@ -45,20 +52,12 @@ let Users = (props) => {
                   onClick={() => {
                     props.toggleFollowingProgress(true, user.id);
 
-                    usersAPI.setUnfollow(user.id).then((response) => {
-                    // axios
-                    //   .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                    //     withCredentials: true,
-                    //     headers: {
-                    //       "API-KEY": "df4f8f83-6604-4f9f-822b-a64824e63ead",
-                    //     },
-                    //   })
-                    //   .then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.unfollow(user.id);
-                        }
-                        props.toggleFollowingProgress(false, user.id);
-                      });
+                    usersAPI.setUnfollow(user.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.unfollow(user.id);
+                      }
+                      props.toggleFollowingProgress(false, user.id);
+                    });
                   }}
                 >
                   Unfollow
@@ -69,24 +68,12 @@ let Users = (props) => {
                   onClick={() => {
                     props.toggleFollowingProgress(true, user.id);
 
-                    usersAPI.setFollow(user.id).then((response) => {
-                    // axios
-                    //   .post(
-                    //     `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                    //     {},
-                    //     {
-                    //       withCredentials: true,
-                    //       headers: {
-                    //         "API-KEY": "df4f8f83-6604-4f9f-822b-a64824e63ead",
-                    //       },
-                    //     }
-                    //   )
-                    //   .then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.follow(user.id);
-                        }
-                        props.toggleFollowingProgress(false, user.id);
-                      });
+                    usersAPI.setFollow(user.id).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.follow(user.id);
+                      }
+                      props.toggleFollowingProgress(false, user.id);
+                    });
                   }}
                 >
                   Follow
