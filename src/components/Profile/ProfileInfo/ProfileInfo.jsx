@@ -6,11 +6,12 @@ const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
+
   return (
     <div>
       <div className={classes.descriptionBlock}>
         <img src={props.profile.photos.large ? props.profile.photos.large : "/IMG/cat3.jpg"} className={classes.profilePhoto} />
-        avatar + description
+        <p>{props.profile.fullName}</p>
       </div>
     </div>
   );
