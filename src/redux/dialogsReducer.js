@@ -14,12 +14,12 @@ let initalState = {
         { id: 3, name: "Alen" },
         { id: 4, name: "Michael" },
     ],
-    newMessageBody: "",
 };
 
-export const sendMessageCreator = () => {
+export const sendMessageCreator = (newMessageBody) => {
     return {
         type: SEND_MESSAGE,
+        newMessageBody
     };
 };
 
@@ -40,11 +40,10 @@ const dialogsReducer = (state = initalState, action) => {
         }
 
         case SEND_MESSAGE: {
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
             return {
                 ...state,
                 messages: [...state.messages, { id: 5, message: body }],
-                newMessageBody: "",
             };
         }
         default: return state;
