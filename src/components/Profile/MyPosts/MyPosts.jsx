@@ -6,12 +6,14 @@ import { Textarea } from "../../common/FormsControlls/FormsControlls.js";
 import { maxLengthCreator, requiredField } from "../../../utils/validators/index.js";
 
 const maxLength10 = maxLengthCreator(10);
-// const required = requiredField;
+
 const AddNewPostForm = (props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors  },
+    // formState: { errors },
+    formState,
+
   } = useForm();
 
   return (
@@ -20,9 +22,11 @@ const AddNewPostForm = (props) => {
         {/* <textarea {...register("newPostText", { required: true, maxLength: 20 })}/> */}
         {/* <Textarea {...register("newPostText", { validate: validatorFunction })} /> */}
 
-        <Textarea {...register("newPostText")} />
-        {/* {isDirty.newPostText && <span>Поле отредактировано!</span>} */}
-        {/* {errors?.newPostText && <span>{errors?.newPostText?.message}</span>} */}
+        <Textarea register={register} formState={formState}/>
+        {/* {errors.register && <span>"Some error"</span>} */}
+
+        {/* register("newPostText", { validate: maxLengthCreator })} /> */}
+        {/* {errors.newPostText && <span>{errors.newPostText.message}</span>} */}
       </div>
       <div>
         <button>Add post</button>

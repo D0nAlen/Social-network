@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./FormsControlls.module.css";
-
-export const Textarea = (props) => {
+import { maxLengthCreator, requiredField } from "../../../utils/validators/index.js";
+// import { useForm } from "react-hook-form";
+    export const Textarea = (props) => {
+        // const {
+        //     // register,
+        //     // handleSubmit,
+        //     formState: { errors },
+        //   } = useForm();         
     return (
         <div className={styles.formControl + " " + styles.error}>
             <div>
-                <textarea {...props}/>
-                {/* <textarea {...input}  {...props} /> */}
+                <textarea {...props.register("newPostText", { required: true, maxLength: 20})}/>
+                 {/* {...props.formState.errors}/> */}
+                     {/* { validate: maxLengthCreator })}/> */}
+                  {props.formState.errors.newPostText&& <span>"Some error"</span>}
             </div>
-            {/* {props.onBlur&&<span>"Some error"</span>} */}
         </div>
     )
-}
+};
 
 // export const Textarea = ({ input, meta, ...props }) => {
     
