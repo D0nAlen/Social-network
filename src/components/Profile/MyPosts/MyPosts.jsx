@@ -1,23 +1,8 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post.jsx";
-import { useForm } from "react-hook-form";
-import { Textarea } from "../../common/FormsControlls/FormsControlls.js";
+import AddNewPostForm from "./AddNewPostForm/AddNewPostForm.jsx";
 
-const AddNewPostForm = (props) => {
-  const { register, handleSubmit, formState } = useForm();
-
-  return (
-    <form onSubmit={handleSubmit(props.onSubmit)}>
-      <div>
-        <Textarea register={register} formState={formState} />
-      </div>
-      <div>
-        <button>Add post</button>
-      </div>
-    </form>
-  );
-};
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((post) => <Post id={post.id} message={post.message} likesCount={post.likesCount} picture={post.picture} />);
