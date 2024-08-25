@@ -17,7 +17,7 @@ const FormControl = (props) => {
 }
 
 export const Textarea = (props) => {
-    const maxLengthText = maxLengthCreator(50);
+    const maxLengthText = maxLengthCreator(70);
     const textFieldName = props.name;
 
     return (
@@ -28,12 +28,13 @@ export const Textarea = (props) => {
 };
 
 export const Input = (props) => {
-    const maxLengthText = maxLengthCreator(20);
+    const maxLengthText = maxLengthCreator(70);
     const textFieldName = props.name;
 
     return (
         <FormControl {...props}>
-            <input {...props.register(textFieldName, { validate: { requiredField, maxLengthText } })} placeholder={props.placeholder} />
+            <input {...props.register(textFieldName, { validate: { requiredField, maxLengthText } })} placeholder={props.placeholder} 
+            type={props.type} />
         </FormControl>
     )
 };

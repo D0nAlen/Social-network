@@ -1,9 +1,13 @@
 import React from "react";
 import LoginForm from "./LoginForm/LoginForm";
+import { connect } from "react-redux";
+import { login } from "../../redux/authReducer";
 
+const Login = (props) => {
+  // debugger;
 
-const Login = () => {
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (formData) => 
+    props.login(formData.email, formData.password, formData.rememberMe);
 
   return (
     <div>
@@ -13,4 +17,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null,{login})(Login);
