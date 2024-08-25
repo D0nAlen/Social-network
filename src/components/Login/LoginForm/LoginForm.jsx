@@ -7,14 +7,13 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit(props.onSubmit)}>
       <div>
-        <Input register={register} formState={formState} placeholder={"Email"} name="Email"/>
+        <Input register={register} formState={formState} placeholder={"Email"} name="email"/>
       </div>
       <div>
-        <Input register={register} formState={formState} placeholder={"Password"} name="Password" type={"password"}/>
+        <Input register={register} formState={formState} placeholder={"Password"} name="password" type={"password"}/>
       </div>
       <div>
-        {/* <Input register={register} formState={formState} type={"checkbox"} /> */}
-        <input {...register("rememberMe")} type={"checkbox"} />
+        <input {...register("rememberMe")} type={"checkbox"} name="rememberMe"/>
         remember me
       </div>
       <div>

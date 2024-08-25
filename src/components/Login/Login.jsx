@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { login } from "../../redux/authReducer";
 
 const Login = (props) => {
-  // debugger;
-
   const onSubmit = (formData) => 
     props.login(formData.email, formData.password, formData.rememberMe);
 
