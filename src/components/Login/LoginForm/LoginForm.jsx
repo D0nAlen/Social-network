@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../common/FormsControlls/FormsControlls";
+import style from "../../../components/common/FormsControlls/FormsControlls.module.css";
 
 const LoginForm = (props) => {
   const { register, handleSubmit, formState } = useForm();
@@ -7,15 +8,17 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit(props.onSubmit)}>
       <div>
-        <Input register={register} formState={formState} placeholder={"Email"} name="email"/>
+        <Input register={register} formState={formState} placeholder={"Email"} name="email" />
       </div>
       <div>
-        <Input register={register} formState={formState} placeholder={"Password"} name="password" type={"password"}/>
+        <Input register={register} formState={formState} placeholder={"Password"} name="password" type={"password"} />
       </div>
       <div>
-        <input {...register("rememberMe")} type={"checkbox"} name="rememberMe"/>
+        <input {...register("rememberMe")} type={"checkbox"} name="rememberMe" />
         remember me
       </div>
+      <div className={style.formSummaryError}>{props.error}</div>
+      {/* {props.error && <div className={style.formSummaryError}>{props.error}</div>} */}
       <div>
         <button>Login</button>
       </div>
