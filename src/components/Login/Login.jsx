@@ -8,10 +8,14 @@ const Login = (props) => {
   return (
     <div>
       <h1>LOGIN</h1>
-      
-      <LoginForm onSubmit={onSubmit} error={props.error} />
+
+      <LoginForm onSubmit={onSubmit} errorMessage={props.errorMessage} />
     </div>
   );
 };
 
-export default connect(null, { login })(Login);
+let mapStateToProps = (state) => ({
+  errorMessage: state.auth.errorMessage,
+});
+
+export default connect(mapStateToProps, { login })(Login);

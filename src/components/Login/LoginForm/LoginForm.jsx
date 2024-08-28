@@ -4,7 +4,6 @@ import style from "../../../components/common/FormsControlls/FormsControlls.modu
 
 const LoginForm = (props) => {
   const { register, handleSubmit, formState } = useForm();
-
   return (
     <form onSubmit={handleSubmit(props.onSubmit)}>
       <div>
@@ -17,8 +16,7 @@ const LoginForm = (props) => {
         <input {...register("rememberMe")} type={"checkbox"} name="rememberMe" />
         remember me
       </div>
-      <div className={style.formSummaryError}>{props.error}</div>
-      {/* {props.error && <div className={style.formSummaryError}>{props.error}</div>} */}
+      {props.errorMessage && <div className={style.formSummaryError}>{props.errorMessage}</div>}
       <div>
         <button>Login</button>
       </div>
