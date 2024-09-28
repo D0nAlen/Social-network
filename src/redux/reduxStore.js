@@ -22,4 +22,6 @@ let store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 });
 
+window.store = store;
+
 export default store;

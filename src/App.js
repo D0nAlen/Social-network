@@ -9,15 +9,15 @@ import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import LoginPage from './components/Login/Login.jsx';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import { initializeApp } from './redux/appReducer.js';
+import { initialiseApp } from './redux/appReducer.js';
 import Preloader from './components/common/Preloader/Preloader.js';
 
 const App = (props) => {
   useEffect(() => {
-    props.initializeApp();
+    props.initialiseApp();
   });
 
-  if (!props.initialized)
+  if (!props.initialised)
     return <Preloader />;
 
     return (
@@ -38,7 +38,7 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  initialized: state.app.initialized,
+  initialised: state.app.initialised,
 });
 
-export default connect(mapStateToProps, { initializeApp })(App);
+export default connect(mapStateToProps, { initialiseApp })(App);
