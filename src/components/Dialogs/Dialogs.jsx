@@ -8,10 +8,10 @@ const Dialogs = (props) => {
   let state = props.dialogsPage;
   let dialogsElements = state.dialogs.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} />);
   let messagesElements = state.messages.map((message) => <Message message={message.message} id={message.id} />);
-  // let newMessageBody = state.newMessageBody;
 
   let addNewMessage = (values) => {
-    props.sendMessage(values.newMessageBody);
+    debugger;
+    props.sendMessage(values.newMessageText);
   };
 
   return (
@@ -21,11 +21,9 @@ const Dialogs = (props) => {
       <div className={classes.messages}>
         <div>{messagesElements}</div>
       </div>
-      <AddMessageForm onSubmit={addNewMessage}/>
+      <AddMessageForm onSubmit={addNewMessage} />
     </div>
   );
 };
-
-
 
 export default Dialogs;

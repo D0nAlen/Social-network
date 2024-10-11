@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { Input } from "../../common/FormsControlls/FormsControlls";
+import { Input } from "../../common/FormsControlls/FormsControlls.js";
 import style from "../../../components/common/FormsControlls/FormsControlls.module.css";
 
-const LoginForm = ({ onSubmit, errorMessage }) => {
+const LoginForm = (props) => {
   const { register, handleSubmit, formState } = useForm();
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(props.onSubmit)}>
       <div>
         <Input register={register} formState={formState} placeholder={"Email"} name="email" />
       </div>
@@ -16,7 +16,7 @@ const LoginForm = ({ onSubmit, errorMessage }) => {
         <input {...register("rememberMe")} type={"checkbox"} name="rememberMe" />
         remember me
       </div>
-      {errorMessage && <div className={style.formSummaryError}>{errorMessage}</div>}
+      {props.errorMessage && <div className={style.formSummaryError}>{props.errorMessage}</div>}
       <div>
         <button>Login</button>
       </div>

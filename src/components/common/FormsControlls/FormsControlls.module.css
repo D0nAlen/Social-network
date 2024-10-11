@@ -3,9 +3,9 @@
   border: 2px crimson solid;
 }
 
-.formControl.error span {
+/* .formControl.error span {
   color: red;
-}
+} */
 
 .error span {
   color: red;

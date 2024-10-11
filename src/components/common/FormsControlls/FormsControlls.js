@@ -7,7 +7,8 @@ const FormControl = (props) => {
     const hasError = props.formState.errors;
 
     return (
-        <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
+        // <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
+        <div className={(hasError ? styles.error : styles.formControl)}>
             <div>
                 {props.children}
                 {hasError[textFieldName] && <span className={styles.error}>{hasError[textFieldName].message}</span>}
@@ -33,9 +34,12 @@ export const Input = (props) => {
 
     return (
         <FormControl {...props}>
-            <input {...props.register(textFieldName, { validate: { requiredField, maxLengthText } })} placeholder={props.placeholder} 
-            type={props.type} />
+            <input {...props.register(textFieldName, { validate: { requiredField, maxLengthText } })} placeholder={props.placeholder}
+                type={props.type} />
         </FormControl>
     )
 };
 
+export const createField = (register, formState, placeholder, name) => {
+    return <div><Input register={register} formState={formState} placeholder={placeholder} name={name} /></div>
+};
